@@ -1,2 +1,2 @@
-web: gunicorn quiz:app --log-file -
+web: gunicorn quiz_video:app --log-file -
 
