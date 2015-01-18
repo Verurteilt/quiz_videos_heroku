@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+<!-- Necesidades básicas de la página
+ ================================================== -->
+<meta charset="utf-8">
+<title>Quiz de Video</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+ <!-- Javascript
+ ================================================== -->
+<script type="text/javascript" src="js/head.load.min.js"></script>
+
+<!-- CSS
+ ================================================== -->
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/quiz-video.css" />
+
+<!--[if lt IE 9]>
+  <link rel="stylesheet" type="text/css" href="css/ie.css" />
+<![endif]-->
+
+<!-- Favicons
+================================================== -->
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="favicon-57.png">
+<link rel="apple-touch-icon" sizes="72x72" href="favicon-72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="favicon-114.png">
+<link rel="apple-touch-icon" sizes="144x144" href="favicon-144.png">
+<link rel="apple-touch-icon" href="favicon-57.png">
+<link rel="stylesheet" href="{{STATIC_URL}}css/vzaar.jQuery-0.1.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://libs.vzaar.io/js/vzaar.jQuery-0.1.min.js"></script>
+<script src="https://player.vzaar.com/libs/flashtakt/client.js"></script>
+<script>
+
+  function checar_tiempos(player,cb,tiempos){
+    var tiempo;
+    player.getTime(function(time){
+      tiempo = time;
+      var new_tiempos = cb(parseInt(tiempo),tiempos,player);
+      setTimeout(function(){ checar_tiempos(player,cb,new_tiempos) }, 300);
+    });
+  }
+
+  function cb(time,tiempos,player){
+    var _video = player;
+    player.addEventListener('playState', function(i){
+        player.ended = i;
+    });
+    if(player.ended == "mediaEnded"){
+      tiempos = $.extend({}, tiempos_questions_originales);
+    }
+    if(String(time) in tiempos){
+      var question = tiempos[String(time)];
+      delete tiempos[String(time)];
+      if($(question).is(":visible") == false){
+        _video.pause();
+        $(question).show();
+      }
+    }
+    return tiempos;
+  }
+
+  function agregar_retro(div,mensaje, bueno){
+    if(bueno){
+      mensaje = "<p style='color:green;'>" +mensaje+"</p>"
+    }else{
+      mensaje = "<p style='color:red;'>" +mensaje+"</p>"
+    }
+    div.find('#retroalimentacion').html(mensaje);
+    setTimeout(function(){
+      div.find('#retroalimentacion').empty()
+      div.hide();
+      reanudar_video();
+    },2000)
+  }
+  
+
+
+  function reanudar_video(){
+    myPlayer = new vzPlayer('video_movie');
+    myPlayer.play2();
+  }
+  
+  function validarRespuesta(context){
+    var $this =$(context);
+    var $parent1 = $this.parent();
+    var $parent2 = $parent1.parent();
+    var $div_quiz = $parent2.parent();
+    var $respuesta_selected = $div_quiz.find(':checked');
+    if($respuesta_selected.data('correcta')){
+      agregar_retro($div_quiz, "Perfecto!", true);
+    }else{
+      agregar_retro($div_quiz, "Hmmm intentalo de nuevo!", false);
+    }
+
+  }
+  $(document).ready(function(){
+    var myPlayer = document.getElementById('video_movie');
+    var video2 = $(myPlayer);
+    window.tiempos_questions_originales = video2.data('times');
+    window.tiempos_falsos = $.extend({}, tiempos_questions_originales);
+    myPlayer = new vzPlayer('video_movie');
+    myPlayer.ready(function(){
+      checar_tiempos(myPlayer,cb,tiempos_falsos);
+    });
+    
+  });   
+</script>
+</head>
+<body>
+
+<!--*********************
+HEADER
+*********************-->
+<header>
+</header>
+<!--*********************
+CONTENIDO
+*********************-->  
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="video">
+ <iframe 
+  allowfullscreen 
+  allowtransparency="true" 
+  class="vzaar-video-player"
+  data-times='{"3":"#quiz_1", "9": "#quiz_2"}'
+  frameborder="0" 
+  data-vzaar = "true"
+  height="432"
+  id="video_movie"
+  mozallowfullscreen 
+  name="video_movie" 
+  src="http://view.vzaar.com/2291655/player?apiOn=true" 
+  title="vzaar video player" 
+  type="text/html" 
+  webkitallowfullscreen 
+  width="768"
+  >
+</iframe>
+
+<!--********** Video **********-->
+        <!--<video width="320" controls data-times='{"3":"#quiz_1", "9": "#quiz_2"}'  height="240" id="video_movie" class="video_2">
+            <source src="movie.mp4" type="video/mp4">
+        </video>-->
+
+<!--********** Preguntas **********-->
+        <div id="quiz_1" class="flotante">
+          <h3>¿Vestibulum scelerisque in orci ac hendrerit?</h3>
+
+<!-- Preguntas -->
+          <form action="">
+            <div>
+              <input type="radio" name="quiz_1">
+              <label for="">Curabitur convallis imperdiet risus, quis scelerisque lectus facilisis in.</label>
+            </div>
+
+            <div>
+              <input type="radio" name="quiz_1">
+              <label for="">Duis convallis leo eu lacinia eleifend.</label>
+            </div>
+
+            <div>
+              <input type="radio" name="quiz_1" data-correcta="true">
+              <label for="">Quisque luctus magna diam, eget fermentum elit maximus nec.</label>
+            </div>
+          </form>
+          <span id="retroalimentacion"></span>
+
+<!-- Botones -->
+          <div class="clearfix botones">
+            <div class="col-md-6">
+              <a href="#" onclick="validarRespuesta(this);">Contestar</a>
+            </div>
+          </div>
+
+        </div>
+
+        <div id="quiz_2" class="flotante">
+          <h3>¿Hola?</h3>
+
+<!-- Pregunta 2 -->
+          <form action="">
+            <div>
+              <input type="radio" name="quiz_2" data-correcta="true">
+              <label for="">Hi</label>
+            </div>
+
+            <div>
+              <input type="radio" name="quiz_2">
+              <label for="">Hello</label>
+            </div>
+
+            <div>
+              <input type="radio" name="quiz_2">
+              <label for="">What</label>
+            </div>
+          </form>
+
+          <span id="retroalimentacion"></span>
+
+<!-- Botones -->
+          <div class="clearfix botones">
+            <div class="col-md-6">
+              <a href="#" onclick="validarRespuesta(this);">Contestar</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--*********************
+FOOTER
+*********************-->
+<footer>
+</footer>
+
+</body>
+</html>

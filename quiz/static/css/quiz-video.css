@@ -1,0 +1,423 @@
+/******************************************************************
+Nombre del sitio: In Serie 4.0
+Autor: Marco Antonio Hern�ndez P�rez
+
+Importa todos los archivos en uno solo 
+******************************************************************/
+/*
+Nombre del sitio:	In Serie 4.01
+Autor:				Marco A. Hern�ndez P�rez
+*/
+/*********************
+IMPORTS
+*********************/
+/*
+Nonmbe del sitio:	In serie 4.0
+Autor:				Marco Antonio Hernández Pérez
+*/
+/*********************
+COLORES
+*********************/
+/*********************
+DEGRADADOS
+(Claro a obscuro)
+*********************/
+/********** Sencillos ***********/
+/*Degradado básico de 2 colores*/
+/*Vertical*/
+/*Horizontal*/
+/*Diagonal superior*/
+/*Diagonal inferior*/
+/*Radial*/
+/********** Efectos ***********/
+/* Metal*/
+/* No funciona en IE <8*/
+/* Stripes No funciona en IE <9*/
+/*********************
+TIPOGRAFÍA
+*********************/
+/********** Tipos de letra ***********/
+@font-face {
+  
+}
+/*Bases*/
+.normal {
+  font-family: Arial, Verdana, "Helvetica Neue", Helvetica, sans-serif;
+}
+/*text decoration*/
+.tnone {
+  text-decoration: none;
+}
+.tunder {
+  text-decoration: underline;
+}
+/* Alinear */
+.center {
+  text-align: center;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+/********** Efectos ***********/
+/*Normal*/
+/*Inset*/
+/*Emboss*/
+/*Brillo*/
+/*blur*/
+/*3D*/
+/*Silueta*/
+/*Drop Cap
+	Se debe definir manualmente el elemento que llevará el efecto. Esta es una muestra con <article> <p>
+*/
+/*********************
+BORDER RADIUS
+*********************/
+/*********************
+TRANSFORM
+*********************/
+/********** Bases ***********/
+/********** 2D ***********/
+/********** 3D ***********/
+/*********************
+BOX SIZING
+*********************/
+/* .boxSizing(border-box); */
+/*********************
+BOX SHADOW
+*********************/
+/********** Fuera ***********/
+/*Sombra estándar*/
+/*Sombra gruesa*/
+/*Brillo*/
+/*Dentro*/
+/*Sombra fuera y dentro*/
+/*Sombras arqueada*/
+.shadow-arc {
+  position: relative;
+}
+.shadow-arc:before,
+.shadow-arc:after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 80%;
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  max-width: 300px;
+  -webkit-box-shadow: 0 15px 10px 0px #cccccc;
+  -moz-box-shadow: 0 15px 10px 0px #cccccc;
+  -ms-box-shadow: 0 15px 10px 0px #cccccc;
+  -o-box-shadow: 0 15px 10px 0px #cccccc;
+  box-shadow: 0 15px 10px 0px #cccccc;
+  behavior: url(PIE.htc);
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+.shadow-arc:after {
+  right: 10px;
+  left: auto;
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
+.shadow-arc-left {
+  position: relative;
+}
+.shadow-arc-left:before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 80%;
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  max-width: 300px;
+  -webkit-box-shadow: 0 15px 10px 0px #cccccc;
+  -moz-box-shadow: 0 15px 10px 0px #cccccc;
+  -ms-box-shadow: 0 15px 10px 0px #cccccc;
+  -o-box-shadow: 0 15px 10px 0px #cccccc;
+  box-shadow: 0 15px 10px 0px #cccccc;
+  behavior: url(PIE.htc);
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+.shadow-arc-right {
+  position: relative;
+}
+.shadow-arc-right:after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 80%;
+  bottom: 15px;
+  right: 10px;
+  left: auto;
+  width: 50%;
+  max-width: 300px;
+  -webkit-box-shadow: 0 15px 10px 0px #cccccc;
+  -moz-box-shadow: 0 15px 10px 0px #cccccc;
+  -ms-box-shadow: 0 15px 10px 0px #cccccc;
+  -o-box-shadow: 0 15px 10px 0px #cccccc;
+  box-shadow: 0 15px 10px 0px #cccccc;
+  behavior: url(PIE.htc);
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
+/*Sombra tipo monumento*/
+.shadow-monument {
+  position: relative;
+}
+.shadow-monument:before {
+  content: "";
+  position: relative\9;
+  position: absolute;
+  z-index: -1;
+  top: 84%;
+  right: 0px;
+  bottom: 0;
+  left: 0px;
+  background: #cccccc;
+  -webkit-box-shadow: 0 0 8px 1px #cccccc;
+  -moz-box-shadow: 0 0 8px 1px #cccccc;
+  -ms-box-shadow: 0 0 8px 1px #cccccc;
+  -o-box-shadow: 0 0 8px 1px #cccccc;
+  box-shadow: 0 0 8px 1px #cccccc;
+  behavior: url(PIE.htc);
+  -webkit-transform: translate(-42px, 0) skew(72deg, 0);
+  -moz-transform: translate(-42px, 0) skew(72deg, 0);
+  -ms-transform: translate(-42px, 0) skew(72deg, 0);
+  -o-transform: translate(-42px, 0) skew(72deg, 0);
+  transform: translate(-42px, 0) skew(72deg, 0);
+}
+/*Sombra hacia los lados*/
+/*********************
+ANIMACIONES
+*********************/
+/*********************
+FORMULARIOS
+*********************/
+/*********************
+USABILIDAD
+*********************/
+/*********************
+DESARROLLO
+*********************/
+/* SEO Helper */
+/* Normalize */
+/* Reset */
+/*********************
+ESTILOS GENERALES
+*********************/
+body {
+  -webkit-font-smoothing: antialiased;
+  /* Fix for webkit rendering */
+
+  -webkit-text-size-adjust: 100%;
+}
+img {
+  max-width: 100%;
+}
+/******* Tipograf�a ******/
+h3 {
+  color: #127dce;
+}
+/******* Links ******/
+a,
+a:visited {
+  /* on hover */
+
+  /* on click */
+
+  /* mobile tap color */
+
+}
+/******* Listas ******/
+ul li a,
+ul li a:visited {
+  /* on hover */
+
+  /* on click */
+
+  /* mobile tap color */
+
+}
+/******* Tablas ******/
+/******* Forms ******/
+form label {
+  padding: 10px 0;
+  font-weight: normal;
+  font-size: 1.5rem;
+}
+/*********************
+HEADER
+*********************/
+/*********** Logo ***********/
+.logo {
+  background: url([object Object]);
+  width: ;
+  height: ;
+}
+.logo span {
+  display: block;
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+/*********************
+CONTENIDO
+*********************/
+.flotante {
+  z-index: 99;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 20px;
+  width: 550px;
+  height: 320px;
+  background: #ffffff;
+  display: none;
+}
+.botones a:link,
+.botones a:visited {
+  display: block;
+  padding: 10px;
+  width: 50%;
+  background: #127dce;
+  color: #ffffff;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  behavior: url(PIE.htc);
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+.botones a:link:hover,
+.botones a:visited:hover {
+  background: #2797ec;
+}
+/******* Video ******/
+.video {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+
+  padding-top: 25px;
+  width: 550px;
+  height: 320px;
+}
+.video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 550px;
+  height: 320px;
+}
+/*********************
+FOOTER
+*********************/
+/*
+Nombre del sitio:	In Serie 4.0
+Autor:				Marco A. Hern�ndez P�rez
+*/
+/* Mobile Landscape
+================================================== */
+/*
+Nombre del sitio:	In serie 4.0
+Autor:				Marco A. Hern�ndez P�rez
+*/
+/* Tablet portrait
+================================================== */
+/*
+Nombre del sitio:	In serie 4.0
+Autor:				Marco A. Hern�ndez P�rez
+*/
+/* Tablet landscape - Desktop
+================================================== */
+/*
+Nombre del sitio:	In serie 4.0
+Autor:				Marco A. Hern�ndez P�rez
+*/
+/* Widescreen
+================================================== */
+/*
+Nombre del sitio:	In Serie 4.0
+Autor:				Marco A. Hern�ndez P�rez
+*/
+/*Mobile landscape*/
+@media only screen and (min-width: 481px) {
+  /*********************
+  HEADER
+  *********************/
+  /*********************
+  CONTENIDO
+  *********************/
+  /*********************
+  FOOTER
+  *********************/
+}
+/*Tablet Portrait*/
+@media only screen and (min-width: 768px) {
+  /*********************
+  HEADER
+  *********************/
+  /*********************
+  CONTENIDO
+  *********************/
+  /*********************
+  FOOTER
+  *********************/
+}
+/*Tablet landscape - Desktop*/
+@media only screen and (min-width: 1030px) {
+  /*********************
+  HEADER
+  *********************/
+  /*********************
+  CONTENIDO
+  *********************/
+  /*********************
+  FOOTER
+  *********************/
+}
+/*Widescreen*/
+@media only screen and (min-width: 1240px) {
+  /*********************
+  HEADER
+  *********************/
+  /*********************
+  CONTENIDO
+  *********************/
+  /*********************
+  FOOTER
+  *********************/
+}
+/*Mobile Retina*/
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+  /*********************
+  HEADER
+  *********************/
+  /*********************
+  CONTENIDO
+  *********************/
+  /*********************
+  FOOTER
+  *********************/
+}
