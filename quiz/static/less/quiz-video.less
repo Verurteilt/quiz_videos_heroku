@@ -1,0 +1,39 @@
+/******************************************************************
+Nombre del sitio: In Serie 4.0
+Autor: Marco Antonio Hernández Pérez
+
+Importa todos los archivos en uno solo 
+******************************************************************/
+
+@import "base.less";
+@import "mobile.less";
+@import "tablet.less";
+@import "desktop.less";
+@import "widescreen.less";
+@import "retina.less";
+
+/*Mobile landscape*/
+@media only screen and (min-width: 481px) {
+	.mobile();
+} 
+
+/*Tablet Portrait*/
+@media only screen and (min-width: 768px) {
+	.tablet();
+}
+
+/*Tablet landscape - Desktop*/
+@media only screen and (min-width: 1030px) {
+	.desktop();
+}
+
+/*Widescreen*/
+@media only screen and (min-width: 1240px) {
+	.widescreen();
+}
+
+
+/*Mobile Retina*/
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+	.retina();
+}

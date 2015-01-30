@@ -268,7 +268,7 @@ HEADER
 *********************/
 /*********** Logo ***********/
 .logo {
-  background: url([object Object]);
+  background: url("");
   width: ;
   height: ;
 }
@@ -279,7 +279,7 @@ HEADER
   width: 0;
 }
 /*********************
-CONTENIDO
+QUIZ
 *********************/
 .flotante {
   z-index: 99;
@@ -313,12 +313,40 @@ CONTENIDO
 .botones a:visited:hover {
   background: #2797ec;
 }
+/*********************
+BANNER HORIZONTAL
+*********************/
+.banner-horizontal {
+  z-index: 99;
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+  padding: 20px;
+  width: 550px;
+  height: 50px;
+  background: #ffffff;
+}
+/*********************
+BANNER HORIZONTAL
+*********************/
+.banner-vertical {
+  z-index: 99;
+  position: absolute;
+  right: -250px;
+  top: 0;
+  padding: 10px;
+  width: 250px;
+  height: 320px;
+  background: #ffffff;
+  border: 1px solid #cbcccb;
+}
+.banner-vertical ul {
+  margin-left: 0;
+  padding-left: 20px;
+}
 /******* Video ******/
 .video {
   position: relative;
-  padding-bottom: 56.25%;
-  /* 16:9 */
-
   padding-top: 25px;
   width: 550px;
   height: 320px;
@@ -330,6 +358,9 @@ CONTENIDO
   width: 550px;
   height: 320px;
 }
+/*********************
+ELEMENTOS
+*********************/
 /*********************
 FOOTER
 *********************/
