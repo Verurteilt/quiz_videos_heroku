@@ -46,7 +46,7 @@
     player.getTime(function(time){
       tiempo = time;
       var new_tiempos = cb(parseInt(tiempo),tiempos,player);
-      setTimeout(function(){ checar_tiempos(player,cb,new_tiempos) }, 300);
+      setTimeout(function(){ checar_tiempos(player,cb,new_tiempos) }, 100);
     });
   }
 
@@ -55,7 +55,10 @@
     player.addEventListener('playState', function(i){
         player.ended = i;
     });
-    if(player.ended == "mediaEnded"){
+    player.addEventListener('interaction', function(i){
+        player.interaction = i;
+    });
+    if(player.ended == "mediaEnded" || player.interaction == "seekbar"){
       tiempos = $.extend({}, tiempos_questions_originales);
     }
     if(String(time) in tiempos){
