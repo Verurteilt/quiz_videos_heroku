@@ -41,16 +41,18 @@
 <script src="https://player.vzaar.com/libs/flashtakt/client.js"></script>
 <script>
 
-  function checar_tiempos(player,cb,tiempos){
+  function checar_tiempos(player,cb,tiempos, tiempos_falsos_banners){
     var tiempo;
     player.getTime(function(time){
       tiempo = time;
-      var new_tiempos = cb(parseInt(tiempo),tiempos,player);
-      setTimeout(function(){ checar_tiempos(player,cb,new_tiempos) }, 100);
+      var _cb = cb(parseInt(tiempo),tiempos,player,tiempos_falsos_banners);
+      var new_tiempos = _cb.tiempos;
+      var new_tiempos_banners = _cb.tiempos_banners;
+      setTimeout(function(){ checar_tiempos(player,cb,new_tiempos, new_tiempos_banners) }, 100);
     });
   }
 
-  function cb(time,tiempos,player){
+  function cb(time,tiempos,player, tiempos_banners){
     var _video = player;
     player.addEventListener('playState', function(i){
         player.ended = i;
@@ -60,6 +62,12 @@
     });
     if(player.ended == "mediaEnded" || player.interaction == "seekbar"){
       tiempos = $.extend({}, tiempos_questions_originales);
+      tiempos_banners = $.extend({}, tiempos_originales_banners);
+
+    }
+
+    if(player.ended == "mediaEnded"){
+      $('[id^=banner]').hide();
     }
     if(String(time) in tiempos){
       var question = tiempos[String(time)];
@@ -69,7 +77,19 @@
         $(question).show();
       }
     }
-    return tiempos;
+    console.log(time);
+    console.log(tiempos_banners);
+    if(String(time) in tiempos_banners){
+      var banner = tiempos_banners[String(time)];
+      delete tiempos_banners[String(time)];
+      if($(banner).is(":visible") == false){
+        $(banner).show();
+      }
+    }
+    var _return = new Object();
+    _return.tiempos = tiempos;
+    _return.tiempos_banners = tiempos_banners;
+    return _return;
   }
 
   function agregar_retro(div,mensaje, bueno){
@@ -106,14 +126,18 @@
     }
 
   }
+
+  
   $(document).ready(function(){
     var myPlayer = document.getElementById('video_movie');
     var video2 = $(myPlayer);
     window.tiempos_questions_originales = video2.data('times');
+    window.tiempos_originales_banners = video2.data('times-banners');
+    window.tiempos_falsos_banners = $.extend({}, tiempos_originales_banners);
     window.tiempos_falsos = $.extend({}, tiempos_questions_originales);
     myPlayer = new vzPlayer('video_movie');
     myPlayer.ready(function(){
-      checar_tiempos(myPlayer,cb,tiempos_falsos);
+      checar_tiempos(myPlayer,cb,tiempos_falsos, tiempos_falsos_banners);
     });
     
   });   
@@ -152,6 +176,7 @@ CONTENIDO
         allowtransparency="true" 
         class="vzaar-video-player"
         data-times='{"3":"#quiz_1", "9": "#quiz_2"}'
+        data-times-banners='{"5":"#bannerh1", "6": "#bannerv1"}'
         frameborder="0" 
         data-vzaar = "true"
         height="432"
@@ -242,7 +267,7 @@ QUIZ
 BANNER HORIZONTAL
 *********************-->
 <!--******** Banner 1 ********-->
-        <div id="bannerh1" class="banner-horizontal">
+        <div id="bannerh1"  class="banner-horizontal" style="display:none;">
 
           <div id="cerrarh1" class="boton-cerrar">
             <a href="#"></a>
@@ -250,7 +275,7 @@ BANNER HORIZONTAL
 
           <div class="col-md-10">
             <a href="#">
-              <img src="icono-descargar.png" alt="Ícono PDF">
+              <img src="{{STATIC_URL}}images/icono-descargar.png" alt="Icono PDF">
               Descarga el material de apoyo
             </a>
 
@@ -261,7 +286,7 @@ BANNER HORIZONTAL
 BANNER VERTICAL
 *********************-->
 <!--******** Banner 1 ********-->
-        <div id="bannerv1" class="banner-vertical">
+        <div id="bannerv1" class="banner-vertical" style="display:none;">
 
           <div id="cerrarv1" class="boton-cerrar">
             <a href="#"></a>
