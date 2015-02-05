@@ -77,8 +77,6 @@
         $(question).show();
       }
     }
-    console.log(time);
-    console.log(tiempos_banners);
     if(String(time) in tiempos_banners){
       var banner = tiempos_banners[String(time)];
       delete tiempos_banners[String(time)];
@@ -127,6 +125,10 @@
 
   }
 
+  function close_banner(context){
+    var c = $(context);
+    c.parent().parent().hide();
+  }
   
   $(document).ready(function(){
     var myPlayer = document.getElementById('video_movie');
@@ -146,18 +148,6 @@
 <!--*********************
 JQUERY
 *********************-->
-<script>
-  $(document).ready(function(){
-    $("#cerrarh1").click(function(){
-        $("#bannerh1").hide();
-    });
-
-    $("#cerrarv1").click(function(){
-        $("#bannerv1").hide();
-    });
-  });
-</script>
-
 </head>
 <body>
 
@@ -270,7 +260,7 @@ BANNER HORIZONTAL
         <div id="bannerh1"  class="banner-horizontal" style="display:none;">
 
           <div id="cerrarh1" class="boton-cerrar">
-            <a href="#"></a>
+            <a href="#" onclick="close_banner(this);"></a>
           </div>
 
           <div class="col-md-10">
@@ -289,7 +279,7 @@ BANNER VERTICAL
         <div id="bannerv1" class="banner-vertical" style="display:none;">
 
           <div id="cerrarv1" class="boton-cerrar">
-            <a href="#"></a>
+            <a href="#" onclick="close_banner(this);"></a>
           </div>
 
           <p>Visita las siguientes ligas para reforzar tu aprendizaje</p>
