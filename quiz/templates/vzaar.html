@@ -66,9 +66,9 @@
 
     }
 
-    if(player.ended == "mediaEnded"){
-      $('[id^=banner]').hide();
-    }
+    //if(player.ended == "mediaEnded"){
+      //$('[id^=banner]').hide();
+    //}
     if(String(time) in tiempos){
       var question = tiempos[String(time)];
       delete tiempos[String(time)];
@@ -112,7 +112,7 @@
   }
   
   function validarRespuesta(context){
-    var $this =$(context);
+    var $this = $(context);
     var $parent1 = $this.parent();
     var $parent2 = $parent1.parent();
     var $div_quiz = $parent2.parent();
@@ -166,7 +166,7 @@ CONTENIDO
         allowtransparency="true" 
         class="vzaar-video-player"
         data-times='{"3":"#quiz_1", "9": "#quiz_2"}'
-        data-times-banners='{"5":"#bannerh1", "6": "#bannerv1"}'
+        data-times-banners='{"106":"#bannerh1", "10": "#bannerv1"}'
         frameborder="0" 
         data-vzaar = "true"
         height="432"
@@ -257,6 +257,7 @@ QUIZ
 BANNER HORIZONTAL
 *********************-->
 <!--******** Banner 1 ********-->
+<!--
         <div id="bannerh1"  class="banner-horizontal" style="display:none;">
 
           <div id="cerrarh1" class="boton-cerrar">
@@ -271,6 +272,19 @@ BANNER HORIZONTAL
 
           </div>
         </div>
+-->
+        <div id="bannerh1"  class="banner-central" style="display:none;">
+
+          <div id="cerrarh1" class="boton-cerrar">
+            <a href="#" onclick="close_banner(this);"></a>
+          </div>
+
+          <div class="col-md-10">
+            <a href="http://cryptic-earth-5001.herokuapp.com/quiz/vzaar" target="_self">Ve este video!</a>
+
+          </div>
+        </div>
+
 
 <!--*********************
 BANNER VERTICAL
@@ -285,7 +299,7 @@ BANNER VERTICAL
           <p>Visita las siguientes ligas para reforzar tu aprendizaje</p>
 
           <ul>
-            <li><a href="#">Maecenas efficitur justo </a></li>
+            <li><a href="http://localhost:8000/quiz/vzaar/" target="_self">Maecenas efficitur justo </a></li>
             <li><a href="#">Nunc non nulla et lectus</a></li>
             <li><a href="#">Etiam sit amet ex interdum</a></li>
             <li><a href="#">In a turpis lobortis</a></li>

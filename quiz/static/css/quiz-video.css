@@ -326,6 +326,18 @@ BANNER HORIZONTAL
   height: 50px;
   background: rgba(255, 255, 255, 0.8);
 }
+
+.banner-central {
+  z-index: 99;
+  position: absolute;
+  left: 0;
+  bottom: 120px;
+  padding: 6px 20px;
+  width: 550px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
 /*********************
 BANNER HORIZONTAL
 *********************/
